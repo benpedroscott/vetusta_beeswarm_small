@@ -5,16 +5,17 @@ body {
   width: 900px;
   /* background-color: #E0E0DC; */
   /* background-color: #f7f7ed; */
-  display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-right: auto;
-      margin-left: auto;
-      align-items: center;
+  /* display: flex; */
+      /* flex-direction: column;
+      justify-content: center; */
+      margin-right: 1px;
+      margin-left: 1px;
+      /* align-items: center; */
 }
 
 #selector{
   margin-bottom: 10px;
+  z-index: 1;
 }
 
 .labels text {
@@ -135,7 +136,7 @@ h3 {
 
 #allChart {
 display: flex;
-flex-direction: column;
+flex-direction: row;
 align-items: center;
 
 }
@@ -170,4 +171,8 @@ button {
 button:hover{
   background-color: rgb(232, 232, 232);
   cursor: pointer;
+}
+
+#sidebar{
+  transform: translate(-200px, 0px);
 }

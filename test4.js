@@ -1368,14 +1368,15 @@ let margin = {
   right: 80,
 };
 
-let height = 600 - margin.top - margin.bottom;
-let width = 800 - margin.left - margin.right;
+let height = 400 - margin.top - margin.bottom;
+let width = 600 - margin.left - margin.right;
 
 let chartArea = d3.select('#chart')
+.attr("transform", `rotate(90 0 0) translate(100, 100)`)
   .append('svg')
   .attr("height", height + margin.top + margin.bottom)
   .attr("width", width + margin.left + margin.right)
-  .attr('transform', `translate(0,0)`)
+  .attr("transform", `rotate( 90 0 0) translate(100, 100)`)
   .append('g')
   .attr('transform', `translate(${margin.left},${margin.top})`);
 
@@ -1386,14 +1387,14 @@ window.onload = function firstRun() {
   runChart(selectName);
 }
 
-var aspect = width / height,
-    chart = d3.select('#chart');
-d3.select(window)
-  .on("resize", function() {
-    var targetWidth = chart.node().getBoundingClientRect().width;
-    chart.attr("width", targetWidth);
-    chart.attr("height", targetWidth / aspect);
-  });
+// var aspect = width / height,
+//     chart = d3.select('#chart');
+// d3.select(window)
+//   .on("resize", function() {
+//     var targetWidth = chart.node().getBoundingClientRect().width;
+//     chart.attr("width", targetWidth);
+//     chart.attr("height", targetWidth / aspect);
+//   });
 
 function runChart(selectName) {
   let data = href_all.filter(d => d.Index_Name == selectName);
@@ -1414,7 +1415,7 @@ function runChart(selectName) {
       .tickFormat(d3.format("d"))
       .tickSize(-height))
     .attr('class', "tickMarksX")
-    .attr("transform", `translate(0,${height + 10})`)
+    .attr("transform", `translate(0,${height + 10})`);
 
   let y = d3.scalePoint()
     .domain(newyDomain)
@@ -1439,6 +1440,7 @@ function runChart(selectName) {
     .style("opacity", 0)
     .attr("class", "tooltip2")
     .style("padding", "15px")
+    .style("left", "200px")
 
   let mouseover = function(d) {
     tooltip
@@ -1544,7 +1546,8 @@ function runChart(selectName) {
     d3.selectAll("circle")
       .attr("cx", (d) => d.x)
       .attr("cy", (d) => d.y);
-  }
+}
+
 
 
   function updateChart(chooseName) {
